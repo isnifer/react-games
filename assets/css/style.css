@@ -262,6 +262,7 @@ body
     position: relative;
 
     min-height: 100%;
+    padding: 50px;
 }
 .listbox
 {
@@ -269,6 +270,10 @@ body
 
     color: #00f;
     background: #999;
+}
+.box__item_stocked
+{
+    color: #f00;
 }
 /* Шапка */
 .header
