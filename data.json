@@ -1,9 +1,9 @@
 [
-    {"name": "Tom", "age": 21},
-    {"name": "Alex", "age": 50},
-    {"name": "Ashley", "age": 43},
-    {"name": "Dennis", "age": 34},
-    {"name": "Jason", "age": 15},
-    {"name": "Todd", "age": 8},
-    {"name": "Jack", "age": 69}
+    {"title": "Tom", "value": 21},
+    {"title": "Alex", "value": 50},
+    {"title": "Длинное имя чувака точно не уберется в одну строчку", "value": 43},
+    {"title": "Dennis", "value": 34},
+    {"title": "Jason", "value": 15},
+    {"title": "Todd", "value": 8},
+    {"title": "Jack", "value": 69}
 ]

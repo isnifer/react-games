@@ -290,8 +290,12 @@ body
 .form
 {
     position: relative;
+}
+.form__part
+{
+    display: inline-block;
 
-    width: 605px;
+    vertical-align: top;
 }
 .form__field
 {
@@ -325,6 +329,14 @@ body
     border: 1px solid #a0a0a0;
     outline: none;
 }
+.form__input:focus,
+.form__select:focus,
+.form__textarea:focus
+{
+    -webkit-box-shadow: 0 0 1px #538cf5;
+       -moz-box-shadow: 0 0 1px #538cf5;
+            box-shadow: 0 0 1px #538cf5;
+}
 .form__input
 {
     height: 30px;
@@ -334,16 +346,65 @@ body
 {
     padding: 0 5px;
 }
-.form__input:focus,
-.form__textarea:focus
-{
-    -webkit-box-shadow: 0 0 2px 2px #ffe500;
-       -moz-box-shadow: 0 0 2px 2px #ffe500;
-            box-shadow: 0 0 2px 2px #ffe500;
-}
 .form__select
 {
+    position: relative;
+
+    display: inline-block;
+
     width: 200px;
+    margin-right: 50px;
+
+    vertical-align: top;
+}
+.form__select-title
+{
+    position: relative;
+
+    height: 20px;
+    padding: 0 4px;
+    padding-right: 20px;
+
+    cursor: default;
+    white-space: nowrap;
+}
+.form__select-title .fa-caret-down
+{
+    position: absolute;
+    top: 3px;
+    right: 5px;
+}
+.form__select-title-text
+{
+    display: block;
+    overflow: hidden;
+}
+.form__select-options
+{
+    position: absolute;
+    z-index: 9;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+
+    border: 1px solid #a0a0a0;
+}
+.form__select-options_state_visible
+{
+    display: block;
+}
+.form__select-option
+{
+    padding: 2px 4px;
+
+    cursor: default;
+}
+.form__select-option:hover
+{
+    color: #fff;
+    background: #538cf5;
 }
 .form__textarea
 {

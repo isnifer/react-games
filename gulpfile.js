@@ -4,11 +4,13 @@ var gulp = require('gulp'),
     csscomb = require('gulp-csscomb'),
     cssmin = require('gulp-csso'),
     rename = require('gulp-rename'),
-    livereload = require('gulp-livereload');
+    livereload = require('gulp-livereload'),
+    react = require('gulp-react');
 
 var paths = {
     scripts: './src/js/*.js',
-    styles: './src/stylus/**.styl'
+    styles: './src/stylus/**.styl',
+    jsx: './src/js/jsx/*.jsx'
 };
 
 gulp.task('uglify', function () {
@@ -34,13 +36,21 @@ gulp.task('stylus', function () {
         .pipe(livereload());
 });
 
+gulp.task('jsx', function () {
+    return gulp.src(paths.jsx)
+        .pipe(react())
+        .pipe(gulp.dest('./assets/js/components/'))
+        .pipe(livereload());
+});
+
 gulp.task('watch', function() {
-    var server = livereload();
     gulp.watch('./*.html').on('change', function (file) {
         server.changed(file.path);
     });
     gulp.watch(paths.scripts, ['uglify']);
     gulp.watch(paths.styles, ['stylus']);
+    gulp.watch(paths.jsx, ['jsx']);
+    var server = livereload();
 });
 
 gulp.task('default', ['watch']);

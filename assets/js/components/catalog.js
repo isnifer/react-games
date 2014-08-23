@@ -3,7 +3,7 @@
 
   var $main = document.querySelector('.main'); 
 
-  var ListBox = React.createClass({
+  var ListBox = React.createClass({displayName: 'ListBox',
 
     getInitialState: function () {
       return {data: []};
@@ -22,49 +22,45 @@
       });
     },
 
-    componentDidMount: function () {
-      this.loadData();
-    },
-
     render: function() {
       return (
-        <div className="listbox">
-          <ListPeople data={this.state.data} />
-          <button onClick={this.loadData}>Подгрузить данные</button>
-        </div>
+        React.DOM.div({className: "listbox"}, 
+          ListPeople({data: this.state.data}), 
+          React.DOM.button({onClick: this.loadData}, "Подгрузить данные")
+        )
       );
     }
 
   });
 
-  var ListPeople = React.createClass({
+  var ListPeople = React.createClass({displayName: 'ListPeople',
     render: function () {
       var people = this.props.data.map(function (man) {
         return (
-          <ListItem name={man.name} age={man.age} />
+          ListItem({name: man.title, age: man.value})
         );
       });
 
       return (
-        <div className="listbox__list">
-          {people}
-        </div>
+        React.DOM.div({className: "listbox__list"}, 
+          people
+        )
       );
     }
   });
 
-  var ListItem = React.createClass({
+  var ListItem = React.createClass({displayName: 'ListItem',
 
     render: function () {
       return (
-        <div className="listbox__item">
-          {this.props.name}: {this.props.age}
-        </div>
+        React.DOM.div({className: "listbox__item"}, 
+          this.props.name, ": ", this.props.age
+        )
       );
     }
 
   });
 
-  React.renderComponent(<ListBox url="data.json" />, $main);
+  React.renderComponent(ListBox({url: "data.json"}), $main);
 
 }(window, window.React, window.jQuery));

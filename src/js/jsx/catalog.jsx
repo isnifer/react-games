@@ -22,10 +22,6 @@
       });
     },
 
-    componentDidMount: function () {
-      this.loadData();
-    },
-
     render: function() {
       return (
         <div className="listbox">
@@ -41,7 +37,7 @@
     render: function () {
       var people = this.props.data.map(function (man) {
         return (
-          <ListItem name={man.name} age={man.age} />
+          <ListItem name={man.title} age={man.value} />
         );
       });
 

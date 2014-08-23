@@ -97,8 +97,6 @@
     }
   });
 
-
-
   React.renderComponent(<Shop url="catalog.json" />, $main);
 
 }(window, window.React, window.jQuery));

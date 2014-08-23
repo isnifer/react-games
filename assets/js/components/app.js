@@ -3,7 +3,7 @@
 
   var $main = document.querySelector('.main');
 
-  var Shop = React.createClass({
+  var Shop = React.createClass({displayName: 'Shop',
     getData: function () {
       $.ajax({
         url: this.props.url,
@@ -39,32 +39,32 @@
 
     render: function () {
       return (
-        <div className="box">
-          <Search filter={this.filterData} value={this.state.filter} inStockOnly={this.state.inStockOnly} inStockChange={this.inStockFilter} />
-          <List products={this.state.data} value={this.state.filter} inStockOnly={this.state.inStockOnly} />
-        </div>
+        React.DOM.div({className: "box"}, 
+          Search({filter: this.filterData, value: this.state.filter, inStockOnly: this.state.inStockOnly, inStockChange: this.inStockFilter}), 
+          List({products: this.state.data, value: this.state.filter, inStockOnly: this.state.inStockOnly})
+        )
       );
     }
   });
 
-  var Search = React.createClass({
+  var Search = React.createClass({displayName: 'Search',
     render: function() {
       return (
-        <div className="box__search">
-          <label className="box__label">
-            <h4>Поиск</h4>
-            <input onChange={this.props.filter} ref="filterTextInput" className="input" placeholder="Поиск..." value={this.props.value} />
-          </label>
-          <label className="box__label">
-            <input onChange={this.props.inStockChange} type="checkbox" className="checkbox" ref="inStockOnly" value={this.props.inStockOnly} />
-            <span className="box__label-title">В наличии</span>
-          </label>
-        </div>
+        React.DOM.div({className: "box__search"}, 
+          React.DOM.label({className: "box__label"}, 
+            React.DOM.h4(null, "Поиск"), 
+            React.DOM.input({onChange: this.props.filter, ref: "filterTextInput", className: "input", placeholder: "Поиск...", value: this.props.value})
+          ), 
+          React.DOM.label({className: "box__label"}, 
+            React.DOM.input({onChange: this.props.inStockChange, type: "checkbox", className: "checkbox", ref: "inStockOnly", value: this.props.inStockOnly}), 
+            React.DOM.span({className: "box__label-title"}, "В наличии")
+          )
+        )
       );
     }
   });
 
-  var List = React.createClass({
+  var List = React.createClass({displayName: 'List',
     render: function () {
 
       var items = this.props.products.map(function (elem) {
@@ -73,32 +73,30 @@
                 ((this.props.value && elem.name.indexOf(this.props.value) !== -1) && (this.props.inStockOnly === elem.stocked && elem.stocked === true)) || 
                 (!this.props.value.length && this.props.inStockOnly === elem.stocked && elem.stocked === true) ||
                 (!this.props.value.length && this.props.inStockOnly === false)) {
-              return (<Item name={elem.name} price={elem.price} stocked={elem.stocked} />);
+              return (Item({name: elem.name, price: elem.price, stocked: elem.stocked}));
             }
           
           }.bind(this));
 
       return (
-        <div className="box__list">
-          {items}
-        </div>
+        React.DOM.div({className: "box__list"}, 
+          items
+        )
       );
     }
   });
 
-  var Item = React.createClass({
+  var Item = React.createClass({displayName: 'Item',
     render: function () {
       var stocked = (this.props.stocked) ? 'box__item' : 'box__item box__item_stocked'; 
       return (
-        <div className={stocked}>
-          {this.props.name} - {this.props.price}
-        </div>
+        React.DOM.div({className: stocked}, 
+          this.props.name, " - ", this.props.price
+        )
       );
     }
   });
 
-
-
-  React.renderComponent(<Shop url="catalog.json" />, $main);
+  React.renderComponent(Shop({url: "catalog.json"}), $main);
 
 }(window, window.React, window.jQuery));
