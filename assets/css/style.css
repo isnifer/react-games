@@ -903,13 +903,13 @@ body
 }
 .react-select__option
 {
-    padding: 2px 5px 2px 9px;
+    padding: 5px 5px 5px 9px;
 
     cursor: default;
 
     color: #c1c6cb;
     border-top: 1px solid #47515c;
-    border-bottom: 1px solid #3a4149;
+    border-bottom: 1px solid #1e2329;
     background: #3a4149;
 }
 .react-select__option:hover
@@ -919,6 +919,40 @@ body
     text-shadow: -1px 1px 1px rgba(0,0,0,.75);
 }
 .react-select__select
+{
+    display: none !important;
+}
+.react-checkbox
+{
+    position: relative;
+
+    width: 14px;
+    height: 14px;
+
+    border: 1px solid #1e2329;
+    border-radius: 2px;
+    background: -webkit-linear-gradient(90deg, #454e57 0%, #404851 15%, #525d69 80%);
+    background:    -moz-linear-gradient(90deg, #454e57 0%, #404851 15%, #525d69 80%);
+    background:         linear-gradient(0deg, #454e57 0%, #404851 15%, #525d69 80%);
+}
+.react-checkbox_checked .react-checkbox__icon
+{
+    display: block;
+}
+.react-checkbox__icon
+{
+    position: absolute;
+    top: -3px;
+    left: 1px;
+
+    display: none;
+
+    width: 14px;
+    height: 12px;
+
+    background: url('../img/react-checkbox/checked.svg') 0 0 no-repeat;
+}
+.react-checkbox__field
 {
     display: none !important;
 }

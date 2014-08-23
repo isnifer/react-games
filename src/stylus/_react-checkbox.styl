@@ -1,0 +1,24 @@
+.react-checkbox
+  background -webkit-linear-gradient(90deg, #454e57 0%, #404851 15%, #525d69 80%)
+  background -moz-linear-gradient(90deg, #454e57 0%, #404851 15%, #525d69 80%)
+  background linear-gradient(0deg, #454e57 0%, #404851 15%, #525d69 80%)
+  width 14px
+  height 14px
+  position relative
+  border 1px solid #1e2329
+  border-radius 2px
+
+  &_checked .react-checkbox__icon
+    display block  
+
+  &__icon
+    background url(../img/react-checkbox/checked.svg) 0 0 no-repeat
+    width 14px
+    height 12px
+    position absolute
+    display none
+    top -3px
+    left 1px
+
+  &__field
+    display none !important

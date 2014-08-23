@@ -1,5 +1,5 @@
 [
     {"url": "basket.html", "title": "Basket"},
     {"url": "catalog.html", "title": "Catalog"},
-    {"url": "select.html", "title": "Custom Selects"}
+    {"url": "form.html", "title": "Custom Form Components"}
 ]
