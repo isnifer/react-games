@@ -1,0 +1,72 @@
+.react-select
+  width 300px
+  display inline-block
+  position relative
+  vertical-align top 
+  margin-right 50px
+  font-size 14px
+
+  &__title
+    padding 0 9px
+    border 1px solid #1e2329
+    height 34px
+    cursor default
+    white-space nowrap
+    padding-right 20px
+    position relative
+    line-height 33px
+    background -moz-linear-gradient(top, #63727c 0%, #4c5d6a 3%, #4b5c69 26%, #3b4751 81%, #3b4750 90%, #3f4d57 100%)
+    background -webkit-linear-gradient(top, #63727c 0%,#4c5d6a 3%,#4b5c69 26%,#3b4751 81%,#3b4750 90%,#3f4d57 100%)
+    background linear-gradient(to bottom, #63727c 0%,#4c5d6a 3%,#4b5c69 26%,#3b4751 81%,#3b4750 90%,#3f4d57 100%)
+
+  &__arrow
+    position absolute
+    top 0
+    right 0
+    width 32px
+    height 100%
+    border-left 1px solid #20262c
+    background #30373e
+    background -moz-linear-gradient(top, #40505c 0%, #313c46 3%, #28323a 100%)
+    background -webkit-linear-gradient(top, #40505c 0%,#313c46 3%,#28323a 100%)
+    background linear-gradient(to bottom, #40505c 0%,#313c46 3%,#28323a 100%)
+
+  &__caret
+    width 8px
+    height 17px
+    background url(../img/react-select/caret.svg) 0 0 no-repeat
+    display block
+    margin 7px auto 0
+
+  &__title-text
+    display block
+    overflow hidden
+    color #fff
+    text-shadow -1px 1px 1px rgba(0,0,0,.75)
+
+  &__options
+    display none
+    position absolute
+    z-index 9
+    width 100%
+    left 0
+    background #fff
+
+    &_state_visible
+      display block
+
+  &__option
+    padding 2px 5px 2px 9px
+    cursor default
+    background #3a4149
+    border-top 1px solid #47515c
+    border-bottom 1px solid #3a4149
+    color #c1c6cb
+
+    &:hover
+      color #fff
+      background linear-gradient(to bottom, #54829a 0%,#538199 20%,#416e86 76%,#3d6b83 88%,#3d6b83 100%)
+      text-shadow -1px 1px 1px rgba(0,0,0,.75)
+
+  &__select
+    display none !important

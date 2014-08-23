@@ -262,7 +262,9 @@ body
     position: relative;
 
     min-height: 100%;
-    padding: 50px;
+    padding: 10px;
+
+    background: #95a5a6;
 }
 .listbox
 {
@@ -282,9 +284,24 @@ body
     font-weight: bold;
 
     margin-bottom: 30px;
+
+    color: #34495e;
 }
 /* Основной контент */
+.main__part
+{
+    margin: 0 0 50px;
+}
 /* Боковое меню */
+.sidebar
+{
+    float: left;
+
+    width: 250px;
+    min-height: 1px;
+
+    background: #34495e;
+}
 /* Подвал */
 /* Форма */
 .form
@@ -356,55 +373,6 @@ body
     margin-right: 50px;
 
     vertical-align: top;
-}
-.form__select-title
-{
-    position: relative;
-
-    height: 20px;
-    padding: 0 4px;
-    padding-right: 20px;
-
-    cursor: default;
-    white-space: nowrap;
-}
-.form__select-title .fa-caret-down
-{
-    position: absolute;
-    top: 3px;
-    right: 5px;
-}
-.form__select-title-text
-{
-    display: block;
-    overflow: hidden;
-}
-.form__select-options
-{
-    position: absolute;
-    z-index: 9;
-    left: 0;
-
-    display: none;
-
-    width: 100%;
-
-    border: 1px solid #a0a0a0;
-}
-.form__select-options_state_visible
-{
-    display: block;
-}
-.form__select-option
-{
-    padding: 2px 4px;
-
-    cursor: default;
-}
-.form__select-option:hover
-{
-    color: #fff;
-    background: #538cf5;
 }
 .form__textarea
 {
@@ -851,4 +819,106 @@ body
     {
         margin-left: 100%;
     }
+}
+/* COMPONENTS */
+.react-select
+{
+    font-size: 14px;
+
+    position: relative;
+
+    display: inline-block;
+
+    width: 300px;
+    margin-right: 50px;
+
+    vertical-align: top;
+}
+.react-select__title
+{
+    line-height: 33px;
+
+    position: relative;
+
+    height: 34px;
+    padding: 0 9px;
+    padding-right: 20px;
+
+    cursor: default;
+    white-space: nowrap;
+
+    border: 1px solid #1e2329;
+    background:    -moz-linear-gradient(top, #63727c 0%, #4c5d6a 3%, #4b5c69 26%, #3b4751 81%, #3b4750 90%, #3f4d57 100%);
+    background: -webkit-linear-gradient(top, #63727c 0%, #4c5d6a 3%, #4b5c69 26%, #3b4751 81%, #3b4750 90%, #3f4d57 100%);
+    background:         linear-gradient(to bottom, #63727c 0%, #4c5d6a 3%, #4b5c69 26%, #3b4751 81%, #3b4750 90%, #3f4d57 100%);
+}
+.react-select__arrow
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 32px;
+    height: 100%;
+
+    border-left: 1px solid #20262c;
+    background: #30373e;
+    background:    -moz-linear-gradient(top, #40505c 0%, #313c46 3%, #28323a 100%);
+    background: -webkit-linear-gradient(top, #40505c 0%, #313c46 3%, #28323a 100%);
+    background:         linear-gradient(to bottom, #40505c 0%, #313c46 3%, #28323a 100%);
+}
+.react-select__caret
+{
+    display: block;
+
+    width: 8px;
+    height: 17px;
+    margin: 7px auto 0;
+
+    background: url('../img/react-select/caret.svg') 0 0 no-repeat;
+}
+.react-select__title-text
+{
+    display: block;
+    overflow: hidden;
+
+    color: #fff;
+    text-shadow: -1px 1px 1px rgba(0,0,0,.75);
+}
+.react-select__options
+{
+    position: absolute;
+    z-index: 9;
+    left: 0;
+
+    display: none;
+
+    width: 100%;
+
+    background: #fff;
+}
+.react-select__options_state_visible
+{
+    display: block;
+}
+.react-select__option
+{
+    padding: 2px 5px 2px 9px;
+
+    cursor: default;
+
+    color: #c1c6cb;
+    border-top: 1px solid #47515c;
+    border-bottom: 1px solid #3a4149;
+    background: #3a4149;
+}
+.react-select__option:hover
+{
+    color: #fff;
+    background: linear-gradient(to bottom, #54829a 0%, #538199 20%, #416e86 76%, #3d6b83 88%, #3d6b83 100%);
+    text-shadow: -1px 1px 1px rgba(0,0,0,.75);
+}
+.react-select__select
+{
+    display: none !important;
 }

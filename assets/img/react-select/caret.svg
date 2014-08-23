@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" baseProfile="full" 
+	xmlns="http://www.w3.org/2000/svg"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:ev="http://www.w3.org/2001/xml-events"
+	width="8px" height="18px">
+<defs>
+<filter id="filter0" x="0%" y="0%" width="100%" height="116.667%" filterUnits="objectBoundingBox">
+<feGaussianBlur in="SourceAlpha" result="dsBlurOut" stdDeviation="0"/>
+<feFlood result="dsFloodOut" flood-color="rgb(0,0,0)"/>
+<feComposite in="dsFloodOut" in2="dsBlurOut" result="dsShadow" operator="atop"/>
+<feComponentTransfer in="dsShadow" result="dsShadowOpacity">
+<feFuncA type="linear" slope="0.75"/>
+</feComponentTransfer>
+<feOffset in="dsShadowOpacity" dx="-1.83697e-016" dy="1" result="dsOffset"/>
+<feComposite in="dsOffset" in2="SourceAlpha" result="dropShadow" operator="out"/>
+</filter>
+<filter id="filter1" x="0%" y="0%" width="100%" height="116.667%" filterUnits="objectBoundingBox">
+<feGaussianBlur in="SourceAlpha" result="dsBlurOut" stdDeviation="0"/>
+<feFlood result="dsFloodOut" flood-color="rgb(0,0,0)"/>
+<feComposite in="dsFloodOut" in2="dsBlurOut" result="dsShadow" operator="atop"/>
+<feComponentTransfer in="dsShadow" result="dsShadowOpacity">
+<feFuncA type="linear" slope="0.75"/>
+</feComponentTransfer>
+<feOffset in="dsShadowOpacity" dx="-1.83697e-016" dy="1" result="dsOffset"/>
+<feComposite in="dsOffset" in2="SourceAlpha" result="dropShadow" operator="out"/>
+</filter>
+<path id="symbol0" fill-rule="evenodd" d="M4.17634 0.899831 C4.17634 0.899831 7.58706 5.78066 7.58706 5.78066 C7.58706 5.78066 0.765615 5.78066 0.765615 5.78066 C0.765615 5.78066 4.17634 0.899831 4.17634 0.899831 Z"/>
+<path id="symbol1" fill-rule="evenodd" d="M4.17634 16.1002 C4.17634 16.1002 7.58706 11.2194 7.58706 11.2194 C7.58706 11.2194 0.765615 11.2194 0.765615 11.2194 C0.765615 11.2194 4.17634 16.1002 4.17634 16.1002 Z"/>
+</defs>
+<g>
+<use xlink:href="#symbol0" filter="url(#filter0)"/>
+<use xlink:href="#symbol0" fill="rgb(255,255,255)"/>
+</g>
+<g>
+<use xlink:href="#symbol1" filter="url(#filter1)"/>
+<use xlink:href="#symbol1" fill="rgb(255,255,255)"/>
+</g>
+</svg>

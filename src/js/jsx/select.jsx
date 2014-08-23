@@ -3,41 +3,54 @@
  */
 ;(function (window, document, React, $, undefined) {
 
-  var mountPoint = document.querySelector('.page');
-
-  var SelectList = React.createClass({
-    render: function () {
-      var selects = [1,2].map(function (el, i) {
-        return <CustomSelect />;
-      });
-      return (
-        <form className="form">
-          {selects}
-        </form>
-      );
-    }
-  });
-
   var CustomSelect = React.createClass({
     getInitialState: function () {
       return {
         options: [],
-        current: {value: '', title: '', selectedIndex: 0, selectedOptions: ''},
+        name: '',
+        current: {value: '', title: '', selectedIndex: 0, selectedOptions: []},
         isOpen: false
       }
     },
     getData: function () {
       $.getJSON('data.json')
         .pipe(function (data) {
-          this.setState({options: data});
-          this.setState({current: data[0]});
+          this.setState({
+            options: data,
+            current: data[0]
+          });
         }.bind(this),
         function (jqxhr, err) {
           console.log(jqxhr, err);
         }.bind(this));
     },
+    wrapSelect: function () {
+      var select = this.props.select,
+          name = select.name,
+          options = [].slice.call(select.options),
+          selectedIndex = select.options.selectedIndex,
+          data;
+
+      data = options.map(function (el, i) {
+        return {title: el.textContent, value: el.value};
+      }); 
+
+      this.setState({
+        options: data,
+        name: name,
+        current: {
+          value: data[selectedIndex].value,
+          title: data[selectedIndex].title,
+          selectedIndex: selectedIndex
+        }
+      });
+    },
     componentDidMount: function () {
-      this.getData();
+      // Load data via AJAX
+      // this.getData();
+
+      // Wrap select from DOM
+      this.wrapSelect();
     },
     onFocus: function (e) {
       // TODO: Bind arrow keys
@@ -49,7 +62,7 @@
       this.setState({'isOpen': !this.state.isOpen});
     },
     onOptionClick: function (options) {
-      var select = this.refs.select.getDOMNode(),
+      var select = this.refs.customSelect.getDOMNode(),
           children = this.refs.options.getDOMNode().children;
       
       this.setState({
@@ -64,22 +77,29 @@
 
       select.options = children;
       select.selectedOptions = options.selectedOptions;
-      select.selectedIndex = options.selectedIndex;
+      select.selectedIndex = this.refs.select.getDOMNode().selectedIndex = options.selectedIndex;
       select.value = options.value;
     },
     render: function () {
       var _this = this;
+      var options = this.state.options.map(function (option, i) {
+        return <option value={option.value}>{option.title}</option>;
+      });
       var customOptions = this.state.options.map(function (option, i) {
         return <CustomOptions title={option.title} key={i} value={option.value} onClick={_this.onOptionClick} />;
       });
       return (
-        <div className="form__select" ref="select" tabIndex={Date.now()} onFocus={this.onFocus} onBlur={this.onBlur}>
-          <div className="form__select-title g-clf" onClick={this.onTitleClick}>
-            <i className="fa fa-caret-down"></i><span className="form__select-title-text">{this.state.current.title}</span> 
+        <div className={'react-select' + ' react-select_' + Date.now()} ref="customSelect" tabIndex={Date.now()} onFocus={this.onFocus} onBlur={this.onBlur}>
+          <div className="react-select__title g-clf" onClick={this.onTitleClick}>
+            <div className="react-select__arrow">
+              <i className="react-select__caret"></i>
+            </div>
+            <span className="react-select__title-text">{this.state.current.title}</span> 
           </div>
-          <div className={this.state.isOpen ? 'form__select-options form__select-options_state_visible' : 'form__select-options'} ref="options"> 
+          <div className={this.state.isOpen ? 'react-select__options react-select__options_state_visible' : 'react-select__options'} ref="options"> 
             {customOptions}
           </div>
+          <select className="react-select__select" ref="select" value={this.state.current.value} name={this.state.name || 'select' + this.props.key}>{options}</select>
         </div>
       );
     }
@@ -99,11 +119,16 @@
     },
     render: function () {
       return (
-        <div className="form__select-option" onClick={this.onClick}>{this.props.title}</div>
+        <div className="react-select__option" onClick={this.onClick}>{this.props.title}</div>
       );
     }
   });  
 
-  React.renderComponent(<SelectList />, mountPoint);
+  var select = document.querySelectorAll('.form__select');
+  select = [].slice.call(select);
+
+  select.map(function (el, i) {
+    React.renderComponent(<CustomSelect select={el} key={i} />, el.parentNode);
+  });
 
 }(window, window.document, window.React, window.jQuery));
