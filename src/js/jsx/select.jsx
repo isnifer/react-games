@@ -46,7 +46,7 @@
       this.setState({'isOpen': false});      
     },
     onTitleClick: function () {
-      this.setState({'isOpen': true});
+      this.setState({'isOpen': !this.state.isOpen});
     },
     onOptionClick: function (options) {
       var select = this.refs.select.getDOMNode(),
@@ -99,7 +99,7 @@
     },
     render: function () {
       return (
-        <div className="form__select-option" data-value={this.props.value} onClick={this.onClick}>{this.props.title}</div>
+        <div className="form__select-option" onClick={this.onClick}>{this.props.title}</div>
       );
     }
   });  
